@@ -12,7 +12,8 @@ RUN pecl install xdebug \
  && echo 'max_execution_time = 120' >> /usr/local/etc/php/conf.d/docker-php-maxexectime.ini;
 
 #Run prestashop scripts
-RUN mkdir -p /tmp/post-install-scripts /tmp/init-scripts
+RUN mkdir -p /tmp/post-install-scripts /tmp/init-scripts /tmp/pre-install-scripts
 COPY ./init-scripts/* /tmp/init-scripts/
 COPY ./post-install-scripts/* /tmp/post-install-scripts/
+COPY ./pre-install-scripts/* /tmp/pre-install-scripts/
 RUN chmod 777 /tmp/post-install-scripts/*.sh /tmp/init-scripts/*.sh
